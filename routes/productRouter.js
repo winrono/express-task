@@ -5,6 +5,8 @@ import productRepo from '../repositories/productRepository';
 const router = new Router();
 
 router.get('/', (req, res) => {
+    var token = req.headers['x-access-token'];
+    console.log(token);
     res.send(productRepo.getProducts());
 });
 
