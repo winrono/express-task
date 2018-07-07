@@ -1,12 +1,13 @@
 import {Router} from 'express';
 import { Product } from '../models';
 import productRepo from '../repositories/productRepository';
+import checkToken from '../middlewares/checkToken';
 
 const router = new Router();
 
+router.use(checkToken);
+
 router.get('/', (req, res) => {
-    var token = req.headers['x-access-token'];
-    console.log(token);
     res.send(productRepo.getProducts());
 });
 
