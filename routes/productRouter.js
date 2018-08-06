@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    // const product = new Product(req.body.id, req.body.name, req.body.brand, req.body.price, req.body.reviews);
     const result = productRepo.addProduct(req.body.name, req.body.brand, req.body.price, req.body.reviews);
     res.send(result);
 });
