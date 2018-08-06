@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import productRepo from '../repositories/productRepository';
 import reviewRepo from '../repositories/reviewRepository';
-import checkToken from '../middlewares/checkToken';
+// import checkToken from '../middlewares/checkToken';
 
 const router = new Router();
 

@@ -11,7 +11,6 @@ import facebookStrategy from './authStrategies/facebookStrategy';
 import twitterStrategy from './authStrategies/twitterStrategy';
 import googleStrategy from './authStrategies/googleStrategy';
 import config from './config/appConfig.json';
-import db from './models';
 
 const app = express();
 
