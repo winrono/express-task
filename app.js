@@ -13,8 +13,6 @@ import googleStrategy from './authStrategies/googleStrategy';
 import config from './config/appConfig.json';
 import db from './models';
 
-db.sequelize.sync({force: true});
-
 const app = express();
 
 app.use(cookieParsing);

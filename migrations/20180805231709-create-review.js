@@ -18,6 +18,16 @@ module.exports = {
             updatedAt: {
                 allowNull: false,
                 type: Sequelize.DATE
+            },
+            ProductId: {
+                type: Sequelize.INTEGER,
+                onDelete: 'SET NULL',
+                onUpdate: 'CASCADE',
+                references: {
+                    model: 'Products',
+                    key: 'id',
+                    as: 'ProductId',
+                },
             }
         });
     },
