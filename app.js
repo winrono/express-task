@@ -13,8 +13,7 @@ import googleStrategy from './authStrategies/googleStrategy';
 import config from './config/appConfig.json';
 import db from './models';
 
-//TODO: check this!
-//db.sequelize.sync({force: true});
+db.sequelize.sync({force: true});
 
 const app = express();
 
