@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from '../config/config.json';
+import config from '../config/appConfig.json';
 
 export default function checkToken(req, res, next) {
     let token = req.headers['x-access-token'];

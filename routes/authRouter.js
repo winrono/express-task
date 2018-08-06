@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import config from '../config/config.json';
+import config from '../config/appConfig.json';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 

@@ -1,9 +1,13 @@
-export class Product {
-    constructor(id, name, brand, price, reviews) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.reviews = reviews;
-    }
+'use strict';
+
+export default function (sequelize, DataTypes) {
+    var Product = sequelize.define('Product', {
+        name: DataTypes.STRING,
+        brand: DataTypes.STRING,
+        price: DataTypes.DECIMAL
+    }, {});
+    Product.associate = function (models) {
+        Product.hasMany(models.Review);
+    };
+    return Product;
 }

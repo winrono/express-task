@@ -1,38 +1,34 @@
-import {Router} from 'express';
-import { Product } from '../models';
+import { Router } from 'express';
 import productRepo from '../repositories/productRepository';
+import reviewRepo from '../repositories/reviewRepository';
 import checkToken from '../middlewares/checkToken';
 
 const router = new Router();
 
-router.use(checkToken);
+//router.use(checkToken);
 
 router.get('/', (req, res) => {
-    res.send(productRepo.getProducts());
+    productRepo.getProducts().then((products) => {
+        res.send(products);
+    });
 });
 
 router.post('/', (req, res) => {
-    const product = new Product(req.body.id, req.body.name, req.body.brand, req.body.price, req.body.reviews);
-    const result = productRepo.addProduct(product);
-    if (result){
-        res.send(product);
-    } else {
-        res.status(422).send(`Product with id ${req.body.id} already exists`);
-    }
+    // const product = new Product(req.body.id, req.body.name, req.body.brand, req.body.price, req.body.reviews);
+    const result = productRepo.addProduct(req.body.name, req.body.brand, req.body.price, req.body.reviews);
+    res.send(result);
 });
 
 router.get('/:id', (req, res) => {
-    const product = productRepo.getProductById(req.params.id);
-    res.send(product);
+    productRepo.getProductById(req.params.id).then((product) => {
+        res.send(product);
+    });
 });
 
 router.get('/:id/reviews', (req, res) => {
-    const product = productRepo.getProductById(req.params.id);
-    if (!product){
-        res.status(204).send();
-    } else {
-        res.send(product.reviews);
-    }
+    reviewRepo.getReviewsByProductId(req.params.id).then((reviews) => {
+        res.send(reviews);
+    });
 });
 
 

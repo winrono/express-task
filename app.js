@@ -10,7 +10,11 @@ import localStrategy from './authStrategies/localStrategy';
 import facebookStrategy from './authStrategies/facebookStrategy';
 import twitterStrategy from './authStrategies/twitterStrategy';
 import googleStrategy from './authStrategies/googleStrategy';
-import config from './config/config.json';
+import config from './config/appConfig.json';
+import db from './models';
+
+//TODO: check this!
+//db.sequelize.sync({force: true});
 
 const app = express();
 

@@ -1,21 +1,21 @@
-import { User } from '../models';
 import _ from 'lodash';
+import {User} from '../models';
 
 //according to task app should be able to only return all users without any other functionality
 
 class UserRepository {
-    constructor() {
-        this.users = [
-            new User('Raman', 'Nasovich', 'roman@test.com', 'test1', '12345678'),
-            new User('Ivan', 'Ivanov', 'ivan@test.by', 'test2', '87654321'),
-            new User('Petr', 'Petrov', 'petr@test.uk', 'test3', '11111111')
-        ];
+    async getUsers(){
+        const users = await User.all();
+        return users;
     }
-    getUsers(){
-        return this.users;
-    }
-    authenticate(login, password){
-        return _.find(this.users, {login: login, password: password});
+    async authenticate(login, password){
+        const user = await User.findOne({
+            where: {
+                login: login,
+                password: password
+            }
+        });
+        return user;
     }
 }
 
