@@ -1,8 +1,11 @@
 import {Router} from 'express';
 import { Product } from '../models';
 import productRepo from '../repositories/productRepository';
+import checkToken from '../middlewares/checkToken';
 
 const router = new Router();
+
+router.use(checkToken);
 
 router.get('/', (req, res) => {
     res.send(productRepo.getProducts());
