@@ -1,4 +1,9 @@
 {
-    "name": "Node.js Homework Application",
-    "secret": "superSecret"
+  "development": {
+    "username": "postgres",
+    "password": "test",
+    "database": "awesomedb",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
 }

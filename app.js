@@ -10,7 +10,7 @@ import localStrategy from './authStrategies/localStrategy';
 import facebookStrategy from './authStrategies/facebookStrategy';
 import twitterStrategy from './authStrategies/twitterStrategy';
 import googleStrategy from './authStrategies/googleStrategy';
-import config from './config/config.json';
+import config from './config/appConfig.json';
 
 const app = express();
 

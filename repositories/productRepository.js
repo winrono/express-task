@@ -1,22 +1,24 @@
-class ProductRepository{
-    constructor(){
-        this.products = [];
+import { Product, Review } from '../models';
+
+class ProductRepository {
+    async getProducts() {
+        const products = await Product.all({
+            include: [
+                Review
+            ]
+        });
+        return products;
     }
-    getProducts(){
-        return this.products;
+    async getProductById(id) {
+        const product = await Product.findById(id);
+        return product;
     }
-    getProductById(id){
-        //using == to handle both string and number use cases
-        return this.products.find((product) => product.id == id);
-    }
-    addProduct(product){
-        const existingProduct = this.getProductById(product.id);
-        if (existingProduct){
-            return false;
-        }else {
-            this.products.push(product);
-            return true;
-        }
+    async addProduct(name, brand, price, reviews) {
+        const createdReviews = await Promise.all(reviews.map((review) => {
+            return Review.create({ description: review.description });
+        }));
+        const product = await Product.create({ name: name, brand: brand, price: price });
+        product.setReviews(createdReviews);
     }
 }
 

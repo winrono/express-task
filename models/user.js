@@ -1,9 +1,14 @@
-export class User {
-    constructor(name, surname, email, login, password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-    }
+'use strict';
+export default function (sequelize, DataTypes) {
+    var User = sequelize.define('User', {
+        name: DataTypes.STRING,
+        surname: DataTypes.STRING,
+        email: DataTypes.STRING,
+        login: DataTypes.STRING,
+        password: DataTypes.STRING
+    }, {});
+    User.associate = function (models) {
+        // associations can be defined here
+    };
+    return User;
 }

@@ -7,12 +7,13 @@ let strategy = new LocalStrategy(
         passwordField: 'password'
     },
     function(username, password, done) {
-        let user = userRepository.authenticate(username, password);
-        if (user){
-            done(null, user);
-        } else{
-            done(null, false);
-        }
+        userRepository.authenticate(username, password).then((user) => {
+            if (user){
+                done(null, user);
+            } else{
+                done(null, false);
+            }
+        });
     }
 );
 

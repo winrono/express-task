@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import config from '../config/config.json';
+import config from '../config/appConfig.json';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
+// import checkToken from '../middlewares/checkToken';
 
 const router = new Router();
+
+//router.use(checkToken);
 
 router.post(
     '/',
